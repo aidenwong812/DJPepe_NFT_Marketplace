@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 import {
   Breadcrumbs,
@@ -33,8 +31,6 @@ enum WorkingTabs {
 }
 
 const CreateNFT = () => {
-  const router = useRouter();
-  const { data } = useSession();
   const { isConnected, address } = useAccount();
 
   const customToast = useToast();
@@ -61,12 +57,9 @@ const CreateNFT = () => {
   ];
 
   useEffect(() => {
-    if (data?.provider !== "siwe" || (isConnected === false && !address)) {
-      signOut({
-        redirect: false,
-      });
-      router.push("/signin");
-    }
+    // if (isConnected === false && !address) {
+      
+    // }
     const divElement = document.getElementById("detailed-container");
     if (divElement) {
       window.scrollTo({

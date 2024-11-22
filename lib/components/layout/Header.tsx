@@ -1,6 +1,5 @@
 "use client";
 import { useCallback, useMemo } from "react";
-import { useSession } from "next-auth/react";
 import { Image } from "@nextui-org/react";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -27,7 +26,6 @@ import { useAccount } from "wagmi";
 
 export default function Header() {
   const router = useRouter();
-  const { data: session, status } = useSession();
   const { address } = useAccount();
   const path = usePathname();
 
@@ -46,24 +44,6 @@ export default function Header() {
       />
     );
   }, []);
-
-  // const headerTrailing = useMemo(
-  //   () => (
-  //     <div>
-  //       {session && address ? (
-  //         <ToggleProfile />
-  //       ) : (
-  //         <PrimaryButton
-  //           text={path === "/signin" ? "Get Started" : "Connect Wallet"}
-  //           className="w-32 md:w-40"
-  //           onClick={() => router.push("/signin")}
-  //           varient="secondary"
-  //         />
-  //       )}
-  //     </div>
-  //   ),
-  //   [session, status]
-  // );
 
   return (
     <div className="px-4 z-50 w-full fixed top-4">
@@ -110,7 +90,7 @@ export default function Header() {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        {session && address ? (
+        {address ? (
           <NavbarContent
             className="ml-auto flex justify-center items-center h-12 max-w-fit gap-0 rounded-full p-0 px-2 bg-white/30 dark:bg-white/30"
             justify="end"
