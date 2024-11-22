@@ -3,8 +3,6 @@
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 
-import useAuthSession from "@/lib/auth/hooks/useAuthSession";
-
 const ProfileButton = ({
   text,
   icon,
@@ -28,7 +26,6 @@ const ProfileButton = ({
 };
 
 const ProfileBody = () => {
-  const { disconnectAccount } = useAuthSession();
   const router = useRouter();
 
   return (
@@ -42,7 +39,6 @@ const ProfileBody = () => {
       <ProfileButton
         text="Logout"
         icon="majesticons:logout-line"
-        onClick={disconnectAccount}
       />
     </div>
   );
