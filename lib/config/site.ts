@@ -54,10 +54,6 @@ export const siteConfig = {
       label: "Help & Feedback",
       href: "/help-feedback",
     },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
   ],
   links: {
     github: "https://github.com/nextui-org/nextui",

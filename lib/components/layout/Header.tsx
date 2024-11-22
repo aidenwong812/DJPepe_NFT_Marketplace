@@ -23,6 +23,7 @@ import { Icon } from "@iconify/react";
 import ToggleProfile from "@/lib/components/profile/ToggleProfile";
 import PrimaryButton from "@/lib/components/button/PrimaryButton";
 import { useAccount } from "wagmi";
+import ConnectWalletButton from "../button/SiweButton";
 
 export default function Header() {
   const router = useRouter();
@@ -141,12 +142,7 @@ export default function Header() {
             </NavbarItem>
           </NavbarContent>
         ) : (
-          <PrimaryButton
-            text={path === "/signin" ? "Get Started" : "Connect Wallet"}
-            className="w-32 md:w-40"
-            onClick={() => router.push("/signin")}
-            varient="secondary"
-          />
+          <ConnectWalletButton />
         )}
 
         {/* Mobile Menu */}
