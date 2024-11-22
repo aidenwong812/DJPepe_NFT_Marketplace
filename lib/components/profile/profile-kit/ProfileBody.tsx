@@ -2,8 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
-
-import useAuthSession from "@/lib/auth/hooks/useAuthSession";
+import { useDisconnect } from "wagmi";
 
 const ProfileButton = ({
   text,
@@ -28,8 +27,8 @@ const ProfileButton = ({
 };
 
 const ProfileBody = () => {
-  const { disconnectAccount } = useAuthSession();
   const router = useRouter();
+  const { disconnect } = useDisconnect();
 
   return (
     <div className="flex flex-col gap-1 px-2 py-3">
@@ -40,9 +39,9 @@ const ProfileBody = () => {
       />
       <ProfileButton text="Settings" icon="lets-icons:setting-line-light" />
       <ProfileButton
-        text="Logout"
+        text="Disconnect"
         icon="majesticons:logout-line"
-        onClick={disconnectAccount}
+        onClick={() => disconnect()}
       />
     </div>
   );

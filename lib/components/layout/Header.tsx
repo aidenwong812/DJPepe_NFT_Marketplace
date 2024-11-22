@@ -1,10 +1,10 @@
 "use client";
 import { useCallback, useMemo } from "react";
-import { useSession } from "next-auth/react";
-import { Image } from "@nextui-org/react";
+import { useAccount } from "wagmi";
 import { usePathname, useRouter } from "next/navigation";
 
 import {
+  Image,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -22,12 +22,10 @@ import {
 import { Icon } from "@iconify/react";
 
 import ToggleProfile from "@/lib/components/profile/ToggleProfile";
-import PrimaryButton from "@/lib/components/button/PrimaryButton";
-import { useAccount } from "wagmi";
+import ConnectWalletButton from "../button/ConnectWalletButton";
 
 export default function Header() {
   const router = useRouter();
-  const { data: session, status } = useSession();
   const { address } = useAccount();
   const path = usePathname();
 
@@ -82,7 +80,7 @@ export default function Header() {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        {session && address ? (
+        {address ? (
           <NavbarContent
             className="ml-auto flex justify-center items-center h-12 max-w-fit gap-0 rounded-full p-0 px-2 bg-white/30 dark:bg-white/30"
             justify="end"
@@ -133,11 +131,7 @@ export default function Header() {
             </NavbarItem>
           </NavbarContent>
         ) : (
-          <PrimaryButton
-            text={"Connect Wallet"}
-            className="w-32 md:w-40"
-            varient="secondary"
-          />
+          <ConnectWalletButton />
         )}
 
         {/* Mobile Menu */}
