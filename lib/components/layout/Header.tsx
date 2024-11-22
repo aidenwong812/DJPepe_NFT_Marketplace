@@ -1,9 +1,10 @@
 "use client";
 import { useCallback, useMemo } from "react";
-import { Image } from "@nextui-org/react";
+import { useAccount } from "wagmi";
 import { usePathname, useRouter } from "next/navigation";
 
 import {
+  Image,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -21,7 +22,6 @@ import {
 import { Icon } from "@iconify/react";
 
 import ToggleProfile from "@/lib/components/profile/ToggleProfile";
-import { useAccount } from "wagmi";
 import ConnectWalletButton from "../button/ConnectWalletButton";
 
 export default function Header() {
