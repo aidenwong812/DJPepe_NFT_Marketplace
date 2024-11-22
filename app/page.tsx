@@ -1,3 +1,6 @@
+'use client'
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import HeroSection from "@/lib/components/landing/HeroSection";
 import ShowcaseSection from "@/lib/components/landing/ShowcaseSection";
 import CompanySection from "@/lib/components/landing/CompanySection";
@@ -6,9 +9,12 @@ import HighlightSection from "@/lib/components/landing/HighlightSection";
 import RoadmapSection from "@/lib/components/landing/RoadmapSection";
 import FeedbackSection from "@/lib/components/landing/FeedbackSection";
 import Header from "@/lib/components/layout/Header";
-import Footer from "@/lib/components/layout/Footer";
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/explore");
+  }, []);
   return (
     <div className="page-bg">
       <Header />
@@ -23,7 +29,6 @@ export default function Home() {
           <FeedbackSection />
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -316,3 +316,8 @@
     }
   }
 }
+
+@font-face {
+  font-family: Maladroit;
+  src: url("/Maladroit.ttf") format("truetype");
+}

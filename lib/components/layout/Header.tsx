@@ -32,7 +32,7 @@ export default function Header() {
   const path = usePathname();
 
   const onLogo = useCallback(() => {
-    router.push("/");
+    router.push("/explore");
   }, []);
 
   const logoElement = useMemo(() => {
@@ -47,26 +47,8 @@ export default function Header() {
     );
   }, []);
 
-  // const headerTrailing = useMemo(
-  //   () => (
-  //     <div>
-  //       {session && address ? (
-  //         <ToggleProfile />
-  //       ) : (
-  //         <PrimaryButton
-  //           text={path === "/signin" ? "Get Started" : "Connect Wallet"}
-  //           className="w-32 md:w-40"
-  //           onClick={() => router.push("/signin")}
-  //           varient="secondary"
-  //         />
-  //       )}
-  //     </div>
-  //   ),
-  //   [session, status]
-  // );
-
   return (
-    <div className="px-4 z-50 w-full fixed top-4">
+    <div className="px-4 z-50 w-full fixed top-4 font-maladroit">
       <Navbar
         classNames={{
           base: "bg-transparent backdrop-filter-none",
@@ -87,7 +69,7 @@ export default function Header() {
         >
           <NavbarItem isActive={path.includes("explore") ? true : false}>
             <Link className="flex gap-2 text-inherit" href="/explore">
-              Explorer NFT
+              NFT Marketplace
             </Link>
           </NavbarItem>
           <NavbarItem isActive={path.includes("create") ? true : false}>
@@ -97,16 +79,6 @@ export default function Header() {
               href="/create"
             >
               Create NFT
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive={path.includes("earn") ? true : false}>
-            <Link className="flex gap-2 text-inherit" href="/earn">
-              EARN
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive={path.includes("campaign") ? true : false}>
-            <Link className="flex gap-2 text-inherit" href="/campaigns">
-              Campaigns
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -162,9 +134,8 @@ export default function Header() {
           </NavbarContent>
         ) : (
           <PrimaryButton
-            text={path === "/signin" ? "Get Started" : "Connect Wallet"}
+            text={"Connect Wallet"}
             className="w-32 md:w-40"
-            onClick={() => router.push("/signin")}
             varient="secondary"
           />
         )}
@@ -178,22 +149,12 @@ export default function Header() {
               color="primary"
               href="/explore"
             >
-              Explorer NFT
+              NFT Marketplace
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link className="w-full" color="foreground" href="/create">
               Create NFT
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full" color="foreground" href="/earn">
-              EARN
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full" color="foreground" href="/campaigns">
-              Campaigns
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>
