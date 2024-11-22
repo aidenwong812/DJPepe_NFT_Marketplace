@@ -4,7 +4,7 @@ This is a NFT Marketplace powered by Generative AI for creating NFT assets using
 
 
 
-https://github.com/user-attachments/assets/79923f0a-3a58-43a0-b217-c884c5da3007
+<video controls src="https://github.com/aidenwong812/DJPepe_NFT_Marketplace/blob/main/readme/demo.mp4" title="https://github.com/aidenwong812"></video>
 
 
 ## Technologies Used
