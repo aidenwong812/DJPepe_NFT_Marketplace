@@ -1,15 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import {
-  Button,
-  Input,
   Switch,
   Breadcrumbs,
   BreadcrumbItem,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
 
-import MultiCarousel from "@/lib/components/carousel/MultiCarousel";
 import NFTShowcaseCard from "@/lib/components/card/NFTShowcaseCard";
 import ImageContainer from "@/lib/components/container/ImageCotainer";
 import { fetchServer } from "@/lib/net/fetch/fetch";
@@ -18,6 +14,7 @@ import useColNums from "@/lib/hooks/useColNums";
 import NFTDetails from "@/app/(main)/explore/NFTDetails.json";
 
 import type { NFTData } from "@/app/(main)/profile/tabs/TabNFT";
+import axios from "axios";
 
 const Explorer = () => {
   const [selectedNFT, setSelectedNFT] = useState(-1);
@@ -27,9 +24,10 @@ const Explorer = () => {
 
   useEffect(() => {
     const fetchListedNFTs = async () => {
+      // const res = await axios.get(`${process.env.NEXT_PUBLIC_ALCHEMY_URL}/getOwnersForCollection/?contractAddress=${process.env.NEXT_PUBLIC_NFT_ADDRESS}`);
       const res = await fetchServer("/nft/listed");
-
-      setListedNFTs(res);
+      console.log(res.data);
+      // setListedNFTs(res.data);
     };
 
     fetchListedNFTs();
@@ -78,15 +76,14 @@ const Explorer = () => {
                 return (
                   <NFTShowcaseCard
                     key={index}
-                    asset={`${process.env.NEXT_PUBLIC_API_BASE_URL}${nft.asset_url}`}
-                    hash={nft.asset_hash}
+                    asset={nft.asset_url}
                   />
                 );
               })}
             </ImageContainer>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <div className="mt-16">
               <h2 className="font-maladroit">Hot</h2>
               <p>
@@ -132,7 +129,7 @@ const Explorer = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

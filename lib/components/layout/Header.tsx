@@ -79,6 +79,15 @@ export default function Header() {
               Create NFT
             </Link>
           </NavbarItem>
+          <NavbarItem isActive={path.includes("profile") ? true : false}>
+            <Link
+              aria-current="page"
+              className="flex gap-2 text-inherit"
+              href="/profile"
+            >
+              My NFTs
+            </Link>
+          </NavbarItem>
         </NavbarContent>
         {address ? (
           <NavbarContent

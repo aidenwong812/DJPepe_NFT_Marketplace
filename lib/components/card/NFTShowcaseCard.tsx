@@ -14,7 +14,7 @@ type Props = {
   hash?: string;
 };
 
-const NFTShowcaseCard: FC<Props> = ({ asset, hash }) => {
+const NFTShowcaseCard: FC<Props> = ({ asset }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
 
@@ -29,7 +29,7 @@ const NFTShowcaseCard: FC<Props> = ({ asset, hash }) => {
         src={asset}
         isZoomed
         className="hover:cursor-pointer"
-        onClick={() => router.push(`/nft/${hash}`)}
+        onClick={() => router.push(`/nft`)}
         onLoad={() => setLoading(true)}
       />
     </Card>

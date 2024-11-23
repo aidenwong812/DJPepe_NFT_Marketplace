@@ -1,21 +1,19 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import { useAccount } from "wagmi";
 import { Image } from "@nextui-org/react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 
 import { postServer } from "@/lib/net/fetch/fetch";
+import getIpfsLink from "@/lib/ipfs/getIpfsLink";
 
 export type NFTData = {
   token_id: number;
   token_name: string;
-  metadata_hash: string;
-  owner: string;
-  creator: string;
   asset_url: string;
-  asset_hash: string;
-  prompt: string;
+  creator: string;
 };
 
 const TabNFT = ({
@@ -35,15 +33,22 @@ const TabNFT = ({
 
   const fetchMyNFTs = useCallback(async () => {
     try {
-      const res = await postServer("/nft/myNFTs", { address });
-      setMyNFTs(res);
+      setMyNFTs([]);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_ALCHEMY_URL}/${process.env.NEXT_PUBLIC_ALCHEMY_KEY}/getNFTsForOwner?owner=${address}`);
+      const nfts = res.data?.ownedNfts;
+      if (nfts && nfts.length > 0) {
+        nfts.map((nft: any) => {
+          const metadata = nft.raw.metadata;
+          setMyNFTs((prev) => [...prev, { token_id: nft.tokenId, token_name: metadata.nft_name, asset_url: getIpfsLink(metadata.url), creator: nft.mint.mintAddress}]);
+        });
+      }
     } catch (err) {
       console.log(err);
     }
   }, [address]);
 
   useEffect(() => {
-    if (address && isConnected) {
+    if (address && isConnected) {     
       fetchMyNFTs();
     }
   }, [address, isConnected]);
@@ -62,12 +67,11 @@ const TabNFT = ({
             return (
               <Image
                 key={nft.token_id}
-                src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${nft.asset_url}`}
+                src={nft.asset_url}
                 isZoomed
                 alt={`NFT ${index}`}
                 className="py-1 rounded-lg hover:cursor-pointer"
                 onClick={
-                  //() => router.push(`/nft/${nft.asset_hash}`)
                   () => handleClick(nft.token_id)
                 }
               />

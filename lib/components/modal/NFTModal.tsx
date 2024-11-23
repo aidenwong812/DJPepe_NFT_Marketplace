@@ -168,11 +168,6 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
                     {data?.token_id}
                   </p>
                   <p className="mt-1">
-                    {" "}
-                    <span className="font-semibold">Prompt</span>:{" "}
-                    {data?.prompt}
-                  </p>
-                  <p className="mt-1">
                     <span className="font-semibold">Creator</span>:{" "}
                     {shortenAddress(data?.creator as string)}
                   </p>
