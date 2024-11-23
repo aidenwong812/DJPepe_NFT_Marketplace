@@ -24,7 +24,7 @@ const NFTShowcaseCard: FC<Props> = ({ asset, nftId }) => {
         alt="Woman listing to music"
         src={asset}
         isZoomed
-        className="hover:cursor-pointer"
+        className="hover:cursor-pointer w-[300px] aspect-square"
         onClick={() => router.push(`/nft/${nftId}`)}
         onLoad={() => setLoading(true)}
       />

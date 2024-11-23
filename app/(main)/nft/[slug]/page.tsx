@@ -85,7 +85,7 @@ export default function NFTDetailView({
           <div className="p-2 lg:bg-white/10 rounded-md">
             {selectedNFT && (
               <Image
-                className="max-h-[600px]"
+                className="w-[400px] aspect-square hover:cursor-pointer object-cover"
                 src={selectedNFT.asset_url}
                 alt="Not Found"
               />
