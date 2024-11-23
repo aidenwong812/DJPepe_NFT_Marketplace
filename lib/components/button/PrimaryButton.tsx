@@ -13,7 +13,7 @@ const PrimaryButton: React.FC<ButtonProps> = ({
   text,
   className,
   onClick,
-  isLoading
+  isLoading,
 }) => {
   return (
     <Button

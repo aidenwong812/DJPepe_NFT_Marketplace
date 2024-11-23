@@ -7,14 +7,10 @@ import { useState, type FC } from "react";
 
 type Props = {
   asset: string;
-  avatar?: string;
-  nftName?: string;
-  nftOwner?: string;
-  price?: string;
-  hash?: string;
+  nftId?: number;
 };
 
-const NFTShowcaseCard: FC<Props> = ({ asset }) => {
+const NFTShowcaseCard: FC<Props> = ({ asset, nftId }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
 
@@ -29,7 +25,7 @@ const NFTShowcaseCard: FC<Props> = ({ asset }) => {
         src={asset}
         isZoomed
         className="hover:cursor-pointer"
-        onClick={() => router.push(`/nft`)}
+        onClick={() => router.push(`/nft/${nftId}`)}
         onLoad={() => setLoading(true)}
       />
     </Card>

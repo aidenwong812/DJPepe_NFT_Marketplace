@@ -47,7 +47,6 @@ const CreateNFT = () => {
         url: imageUri,
       }  
       const metadataUrl = await uploadJson(metaData);
-      console.log(metadataUrl);
       await mintNFT(metadataUrl.uri, royalty);        
     } catch (err) {
       console.error(err);

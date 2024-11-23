@@ -6,7 +6,6 @@ import { Image } from "@nextui-org/react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 
-import { postServer } from "@/lib/net/fetch/fetch";
 import getIpfsLink from "@/lib/ipfs/getIpfsLink";
 
 export type NFTData = {
@@ -70,7 +69,7 @@ const TabNFT = ({
                 src={nft.asset_url}
                 isZoomed
                 alt={`NFT ${index}`}
-                className="py-1 rounded-lg hover:cursor-pointer"
+                className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
                 onClick={
                   () => handleClick(nft.token_id)
                 }
