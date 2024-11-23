@@ -23,7 +23,6 @@ import useToast from "@/lib/hooks/toast/useToast";
 import useComments from "@/lib/hooks/nft/useComments";
 import useLike from "@/lib/hooks/nft/useLike";
 import useNFTBuy from "@/lib/web3/hook/nft/useNFTBuy";
-import usePagination from "@/lib/hooks/nft/usePagination";
 import { getNFT } from "@/lib/web3/hook/nft/getNFT";
 import { NFTData } from "@/types";
 export default function NFTDetailView({

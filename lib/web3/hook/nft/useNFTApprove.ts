@@ -17,7 +17,6 @@ const useNFTApprove = () => {
     if (!approveNFTAsync) {
       return;
     }
-    console.log(tokenId);
     try {
       const approveTx = await approveNFTAsync({
         address: NFT_ADDRESS,
