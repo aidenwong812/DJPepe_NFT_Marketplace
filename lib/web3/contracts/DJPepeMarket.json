@@ -18,7 +18,7 @@
         "type": "uint256"
       }
     ],
-    "name": "NYW__OnlyTokenOwner",
+    "name": "DJPepe__OnlyTokenOwner",
     "type": "error"
   },
   {
@@ -31,7 +31,7 @@
         "type": "uint256"
       }
     ],
-    "name": "NYW__NFTDelisted",
+    "name": "DJPepe__NFTDelisted",
     "type": "event"
   },
   {
@@ -44,7 +44,7 @@
         "type": "uint256"
       }
     ],
-    "name": "NYW__NFTListed",
+    "name": "DJPepe__NFTListed",
     "type": "event"
   },
   {
@@ -69,7 +69,7 @@
         "type": "uint256"
       }
     ],
-    "name": "NYW__NFTSold",
+    "name": "DJPepe__NFTSold",
     "type": "event"
   },
   {
@@ -82,7 +82,7 @@
         "type": "uint256"
       }
     ],
-    "name": "NYW__withdraw",
+    "name": "DJPepe__withdraw",
     "type": "event"
   },
   {
