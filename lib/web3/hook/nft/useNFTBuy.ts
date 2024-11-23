@@ -1,7 +1,7 @@
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { ethers } from "ethers";
 
-import MARKET_ABI from "@/lib/web3/contracts/NYWMarket.json";
+import MARKET_ABI from "@/lib/web3/contracts/DJPepeMarket.json";
 
 const MARKET_ADDRESS = process.env.NEXT_PUBLIC_MARKET_ADDRESS as `0x${string}`;
 

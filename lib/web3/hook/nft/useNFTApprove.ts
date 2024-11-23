@@ -3,7 +3,7 @@ import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 const MARKET_ADDRESS = process.env.NEXT_PUBLIC_MARKET_ADDRESS as `0x${string}`;
 const NFT_ADDRESS = process.env.NEXT_PUBLIC_NFT_ADDRESS as `0x${string}`;
 
-import NFT_ABI from "@/lib/web3/contracts/NYWNFT.json";
+import NFT_ABI from "@/lib/web3/contracts/DJPepeNFT.json";
 
 const useNFTApprove = () => {
   const { data: approveNFTHash, writeContractAsync: approveNFTAsync } =
