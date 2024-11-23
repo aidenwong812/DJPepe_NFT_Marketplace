@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-geist-mono)"],
+        maladroit: "Maladroit"
       },
       colors: {
         'light-blue': 'var(--color-light-blue)',

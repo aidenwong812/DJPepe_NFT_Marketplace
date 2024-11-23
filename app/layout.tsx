@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { cookieToInitialState } from "wagmi";
 import { ToastContainer } from "react-toastify";
 
-import { Providers } from "./providers";
+import { Providers } from "@/provider/providers";
 import Web3ModalProvider from "@/lib/web3/WagmiProvider";
 import { wagmiConfig } from "@/lib/web3/WagmiConfig";
 

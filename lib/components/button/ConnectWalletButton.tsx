@@ -29,9 +29,8 @@ const ConnectWalletButton = () => {
   return (
     <PrimaryButton
       text={"Connect Wallet"}
-      className="w-32 md:w-40"
+      className="w-40 md:w-48"
       onClick={onSignIn}
-      varient="secondary"
     />
   );
 };

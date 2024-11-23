@@ -30,7 +30,7 @@ export default function Header() {
   const path = usePathname();
 
   const onLogo = useCallback(() => {
-    router.push("/");
+    router.push("/explore");
   }, []);
 
   const logoElement = useMemo(() => {
@@ -46,13 +46,13 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="px-4 z-50 w-full fixed top-4">
+    <div className="px-4 z-50 w-full fixed top-4 font-maladroit">
       <Navbar
         classNames={{
           base: "bg-transparent backdrop-filter-none",
           wrapper:
             "px-4 sm:px-6 bg-white/15 border-1 border-white/30 backdrop-blur-xl backdrop-saturate-150 rounded-full",
-          item: "data-[active=true]:text-primary max-w-[1536px]",
+          item: "data-[active=true]:text-[#4B0082] max-w-[1536px]",
         }}
         height="100px"
         maxWidth="2xl"
@@ -67,7 +67,7 @@ export default function Header() {
         >
           <NavbarItem isActive={path.includes("explore") ? true : false}>
             <Link className="flex gap-2 text-inherit" href="/explore">
-              Explorer NFT
+              NFT Marketplace
             </Link>
           </NavbarItem>
           <NavbarItem isActive={path.includes("create") ? true : false}>
@@ -79,62 +79,12 @@ export default function Header() {
               Create NFT
             </Link>
           </NavbarItem>
-          <NavbarItem isActive={path.includes("earn") ? true : false}>
-            <Link className="flex gap-2 text-inherit" href="/earn">
-              EARN
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive={path.includes("campaign") ? true : false}>
-            <Link className="flex gap-2 text-inherit" href="/campaigns">
-              Campaigns
-            </Link>
-          </NavbarItem>
         </NavbarContent>
         {address ? (
           <NavbarContent
             className="ml-auto flex justify-center items-center h-12 max-w-fit gap-0 rounded-full p-0 px-2 bg-white/30 dark:bg-white/30"
             justify="end"
           >
-            {/* Theme change */}
-            <NavbarItem className="hidden lg:flex">
-              <Button isIconOnly radius="full" variant="light">
-                <Icon
-                  className="text-white"
-                  icon="solar:sun-linear"
-                  width={24}
-                />
-              </Button>
-            </NavbarItem>
-            {/* Notifications */}
-            <NavbarItem className="flex">
-              <Popover offset={12} placement="bottom-end">
-                <PopoverTrigger>
-                  <Button
-                    disableRipple
-                    isIconOnly
-                    className="overflow-visible"
-                    radius="full"
-                    variant="light"
-                  >
-                    <Badge
-                      color="danger"
-                      content="5"
-                      showOutline={false}
-                      size="md"
-                    >
-                      <Icon
-                        className="text-white"
-                        icon="solar:bell-linear"
-                        width={22}
-                      />
-                    </Badge>
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px]">
-                  <span>KKK</span>
-                </PopoverContent>
-              </Popover>
-            </NavbarItem>
             {/* User Menu */}
             <NavbarItem className="flex items-center">
               <ToggleProfile />
@@ -153,22 +103,12 @@ export default function Header() {
               color="primary"
               href="/explore"
             >
-              Explorer NFT
+              NFT Marketplace
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link className="w-full" color="foreground" href="/create">
               Create NFT
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full" color="foreground" href="/earn">
-              EARN
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full" color="foreground" href="/campaigns">
-              Campaigns
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>
