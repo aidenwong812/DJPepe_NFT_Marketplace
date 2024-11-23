@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useAccount } from "wagmi";
-import { Image } from "@nextui-org/react";
+import { Image, Spinner } from "@nextui-org/react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 
@@ -29,7 +29,7 @@ const TabNFT = ({
   //const router = useRouter();
   const { address, isConnected } = useAccount();
   const [myNFTs, setMyNFTs] = useState<NFTData[]>([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const fetchMyNFTs = useCallback(async () => {
     try {
       setMyNFTs([]);
@@ -38,7 +38,7 @@ const TabNFT = ({
       if (nfts && nfts.length > 0) {
         nfts.map((nft: any) => {
           const metadata = nft.raw.metadata;
-          setMyNFTs((prev) => [...prev, { token_id: nft.tokenId, token_name: metadata.nft_name, asset_url: getIpfsLink(metadata.url), creator: nft.mint.mintAddress}]);
+          setMyNFTs((prev) => [...prev, { token_id: nft.tokenId, token_name: metadata.nft_name, asset_url: getIpfsLink(metadata.url), creator: nft.mint.mintAddress }]);
         });
       }
     } catch (err) {
@@ -47,8 +47,9 @@ const TabNFT = ({
   }, [address]);
 
   useEffect(() => {
-    if (address && isConnected) {     
+    if (address && isConnected) {
       fetchMyNFTs();
+      setIsLoading(false);
     }
   }, [address, isConnected]);
 
@@ -61,22 +62,26 @@ const TabNFT = ({
   return (
     <div className="flex flex-wrap">
       <Box sx={{ width: "100%", overflowY: "none" }}>
-        <ImageList variant="masonry" cols={cols} gap={10}>
-          {myNFTs.map((nft, index) => {
-            return (
-              <Image
-                key={nft.token_id}
-                src={nft.asset_url}
-                isZoomed
-                alt={`NFT ${index}`}
-                className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
-                onClick={
-                  () => handleClick(nft.token_id)
-                }
-              />
-            );
-          })}
-        </ImageList>
+        {
+          isLoading ? <Spinner className="mt-10 size-[100px]" /> :
+            <ImageList variant="masonry" cols={cols} gap={10}>
+              {
+                myNFTs.map((nft, index) => {
+                  return (
+                    <Image
+                      key={nft.token_id}
+                      src={nft.asset_url}
+                      isZoomed
+                      alt={`NFT ${index}`}
+                      className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
+                      onClick={
+                        () => handleClick(nft.token_id)
+                      }
+                    />
+                  );
+                })}
+            </ImageList>
+        }
       </Box>
     </div>
   );

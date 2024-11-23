@@ -4,6 +4,7 @@ import {
   Switch,
   Breadcrumbs,
   BreadcrumbItem,
+  Spinner,
 } from "@nextui-org/react";
 import { useGetAllListedNFTs } from "@/lib/web3/hook/nft/useGetAllListedNFTs"
 
@@ -17,15 +18,18 @@ import { NFTData } from "@/types";
 const Explorer = () => {
   const [selectedNFT, setSelectedNFT] = useState(-1);
   const [listedNFTs, setListedNFTs] = useState<NFTData[]>([]);
-  useEffect(() =>{
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
     const fetchListed = async () => {
+      setIsLoading(true);
       const listedNFTs = await useGetAllListedNFTs();
       setListedNFTs(listedNFTs);
+      setIsLoading(false);
     }
     fetchListed();
   }, [])
 
-  const cols = useColNums();  
+  const cols = useColNums();
 
   return (
     <div >
@@ -57,25 +61,24 @@ const Explorer = () => {
               )}
             </Breadcrumbs>
           </span>
-          <Switch defaultSelected color="secondary">
-            <span>Buy Now</span>
-          </Switch>
         </div>
-        <div> 
+        <div>
           <div className="mt-16 text-center">
             <h2 className="font-maladroit">Latest NFTs</h2>
             <p className="mb-10">The latest NFTs by NYW artists and users</p>
-            <ImageContainer cols={cols}>
-              {listedNFTs.map((nft, index) => {
-                return (
-                  <NFTShowcaseCard
-                    key={index}
-                    asset={nft.asset_url}
-                    nftId={nft.token_id}
-                  />
-                );
-              })}
-            </ImageContainer>
+            {
+              isLoading ? <Spinner className="mt-10 size-[100px]" /> :
+                <ImageContainer cols={cols}>
+                  {listedNFTs.map((nft, index) => {
+                    return (
+                      <NFTShowcaseCard
+                        key={index}
+                        asset={nft.asset_url}
+                        nftId={nft.token_id}
+                      />
+                    );
+                  })}
+                </ImageContainer>}
           </div>
         </div>
       </div>

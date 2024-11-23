@@ -53,7 +53,6 @@ const ProfilePage = () => {
                     <p>NFTs</p>
                   </div>
                 }
-                className="w-full"
               >
                 <TabNFT
                   setModalType={setModalType}
