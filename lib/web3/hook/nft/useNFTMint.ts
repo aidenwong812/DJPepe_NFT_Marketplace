@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { ContractFunctionExecutionError } from "viem";
 
-import NFTABI from "@/lib/web3/contracts/NYWNFT.json";
+import NFTABI from "@/lib/web3/contracts/DJPepeNFT.json";
 
 const NFT_ADDRESS = process.env.NEXT_PUBLIC_NFT_ADDRESS as `0x${string}`;
 
