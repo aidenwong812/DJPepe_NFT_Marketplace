@@ -33,11 +33,10 @@ const ProfileBody = () => {
   return (
     <div className="flex flex-col gap-1 px-2 py-3">
       <ProfileButton
-        text="My Profile"
+        text="My NFT"
         icon="lucide:user-round"
         onClick={() => router.push("/profile")}
-      />
-      <ProfileButton text="Settings" icon="lets-icons:setting-line-light" />
+      />  
       <ProfileButton
         text="Disconnect"
         icon="majesticons:logout-line"

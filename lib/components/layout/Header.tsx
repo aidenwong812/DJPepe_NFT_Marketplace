@@ -52,7 +52,7 @@ export default function Header() {
           base: "bg-transparent backdrop-filter-none",
           wrapper:
             "px-4 sm:px-6 bg-white/15 border-1 border-white/30 backdrop-blur-xl backdrop-saturate-150 rounded-full",
-          item: "data-[active=true]:text-primary max-w-[1536px]",
+          item: "data-[active=true]:text-[#4B0082] max-w-[1536px]",
         }}
         height="100px"
         maxWidth="2xl"
@@ -85,46 +85,6 @@ export default function Header() {
             className="ml-auto flex justify-center items-center h-12 max-w-fit gap-0 rounded-full p-0 px-2 bg-white/30 dark:bg-white/30"
             justify="end"
           >
-            {/* Theme change */}
-            <NavbarItem className="hidden lg:flex">
-              <Button isIconOnly radius="full" variant="light">
-                <Icon
-                  className="text-white"
-                  icon="solar:sun-linear"
-                  width={24}
-                />
-              </Button>
-            </NavbarItem>
-            {/* Notifications */}
-            <NavbarItem className="flex">
-              <Popover offset={12} placement="bottom-end">
-                <PopoverTrigger>
-                  <Button
-                    disableRipple
-                    isIconOnly
-                    className="overflow-visible"
-                    radius="full"
-                    variant="light"
-                  >
-                    <Badge
-                      color="danger"
-                      content="5"
-                      showOutline={false}
-                      size="md"
-                    >
-                      <Icon
-                        className="text-white"
-                        icon="solar:bell-linear"
-                        width={22}
-                      />
-                    </Badge>
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px]">
-                  <span>KKK</span>
-                </PopoverContent>
-              </Popover>
-            </NavbarItem>
             {/* User Menu */}
             <NavbarItem className="flex items-center">
               <ToggleProfile />

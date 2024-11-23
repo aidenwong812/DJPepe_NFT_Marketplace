@@ -11,23 +11,15 @@ import { Icon } from "@iconify/react";
 
 import MultiCarousel from "@/lib/components/carousel/MultiCarousel";
 import NFTShowcaseCard from "@/lib/components/card/NFTShowcaseCard";
-import PrimaryButton from "@/lib/components/button/PrimaryButton";
 import ImageContainer from "@/lib/components/container/ImageCotainer";
 import { fetchServer } from "@/lib/net/fetch/fetch";
 import useColNums from "@/lib/hooks/useColNums";
-
-import FeaturedIcon from "@/public/icon/featured.svg";
-import PFPIcon from "@/public/icon/pfp.svg";
-import VideoIcon from "@/public/icon/movie.svg";
-import MusicIcon from "@/public/icon/music.svg";
-import NewIcon from "@/public/icon/new.svg";
 
 import NFTDetails from "@/app/(main)/explore/NFTDetails.json";
 
 import type { NFTData } from "@/app/(main)/profile/tabs/TabNFT";
 
 const Explorer = () => {
-  const [selectedItem, setSelectedItem] = useState(0);
   const [selectedNFT, setSelectedNFT] = useState(-1);
   const [listedNFTs, setListedNFTs] = useState<NFTData[]>([]);
 

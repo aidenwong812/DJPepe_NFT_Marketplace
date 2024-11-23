@@ -1,32 +1,26 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useAccount } from "wagmi";
 import {
   Breadcrumbs,
   BreadcrumbItem,
-  Spinner,
   Spacer,
   Input,
 } from "@nextui-org/react";
 
-import ImageCard from "./components/ImageCard";
 import PrimaryButton from "@/lib/components/button/PrimaryButton";
 
-import { postServer } from "@/lib/net/fetch/fetch";
 import useToast from "@/lib/hooks/toast/useToast";
 import useNFTMint from "@/lib/web3/hook/nft/useNFTMint";
-import ImageComponent from "@/lib/components/imagecomponent";
+import MediaUpload from "./components/MediaUpload";
+import { useFileUploadProvider } from "@/provider/FileUploadProvider";
+import { uploadJson } from "@/lib/ipfs/uploadJson";
 
 const CreateNFT = () => {
-  const { isConnected, address } = useAccount();
+  const { imageUri } = useFileUploadProvider()
 
   const customToast = useToast();
   const { isPendingMint, isMintLoading, isMintSuccess, mintNFT } = useNFTMint();
 
-  const [isGenerating, setIsGenerating] = useState<boolean>(false);
-  const [genImg, setGenImg] = useState<any[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string>("");
-  const [inputText, setInputText] = useState("");
   const [nftName, setNftName] = useState("");
   const [royalty, setRoyalty] = useState(0);
 
@@ -37,7 +31,7 @@ const CreateNFT = () => {
   }, [isMintSuccess]);
 
   const mintNow = async () => {
-    if (selectedImage === "") {
+    if (imageUri === null) {
       customToast("failed", "Select image");
       return;
     }
@@ -46,34 +40,15 @@ const CreateNFT = () => {
       return;
     }
 
-    try {
-      const res = await postServer("/nft/mint", {
-        address: address as string,
-        name: nftName,
-        url: selectedImage,
-        prompt: inputText,
-      });
-
-      if (res.success === true) {
-        const { nft_name, metadataURL, assetURL } = res;
-
-        console.log(metadataURL);
-        try {
-          const tx = await mintNFT(metadataURL, royalty);
-          setTimeout(async () => {
-            if (tx) {
-              const response = await postServer("/nft/save", {
-                tx,
-                nft_name,
-                assetURL,
-                prompt: inputText,
-              });
-            }
-          }, 30000);
-        } catch (err) {
-          console.log(err);
-        }
-      }
+    
+    try {      
+      const metaData = {
+        nft_name: nftName,
+        url: imageUri,
+      }  
+      const metadataUrl = await uploadJson(metaData);
+      console.log(metadataUrl);
+      await mintNFT(metadataUrl.uri, royalty);        
     } catch (err) {
       console.error(err);
       customToast("failed", "Failed to mint NFT");
@@ -103,44 +78,11 @@ const CreateNFT = () => {
         <div className="flex flex-col lg:flex-row gap-3 pb-6">
           <div className="w-full p-4 bg-white/5 rounded-md">
             <div className="lg:h-[calc(100vh-220px)]  ">
-              <div className="w-full h-full flex justify-center items-center text-center">
-                {isGenerating && (
-                  <Spinner
-                    label="Loading..."
-                    size="lg"
-                    style={{ color: "#15BFFD", background: "transparent" }}
-                  />
-                )}
+              <div className="w-full h-full flex justify-center items-center text-center">                
                 <div className="w-full">
                   <h3 className="font-maladroit">Select Image and Mint Your NFT</h3>
                   <div className="mt-10 flex justify-center">
-                    <label htmlFor="file" className="cursor-pointer">
-                      {selectedImage ? (
-                        <ImageComponent src={selectedImage} height={200} />
-                      ) : (
-                        <div className="flex items-center justify-center gap-[20px] w-full h-full duration-700 opacity-100 border-[2px] border-dashed rounded-[18px]">
-                          <img
-                            src="/icon/upload.svg"
-                            width="25"
-                            height="25"
-                            alt="icon"
-                          />
-                          <p>Select File</p>
-                        </div>
-                      )}
-                    </label>
-                    <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => {
-                        if (e.target.files && e.target.files[0]) {
-                          setSelectedImage(URL.createObjectURL(e.target.files[0]));
-                        }
-                      }}
-                    />
+                    <MediaUpload />
                   </div>
                   <Spacer y={6} />
                   <div className="flex gap-3">

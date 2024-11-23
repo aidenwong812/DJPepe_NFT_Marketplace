@@ -187,26 +187,9 @@
     }
 
     .btn:hover {
-      background-image: url("/bluebutton.png");
-      color: #060925;
+      background-color: #fff;
+      color: #420252;
       cursor: pointer;
-    }
-
-    .btn-reverse {
-      background-image: url("/bluebutton.png");
-      color: #060925;
-      background-repeat: no-repeat;  
-      background-position: 0% 0%;
-      background-size: 100% 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .btn-reverse:hover {
-      cursor: pointer;
-      background-image: url("/whitebutton.png");
-      color: white;
     }
 
     .roadmap-card {
