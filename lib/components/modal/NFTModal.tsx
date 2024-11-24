@@ -113,7 +113,7 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
             </ModalHeader>
             <ModalBody className="font-small items-center">
               <Image
-                className="h-[600px]"
+                className="h-[600px] object-cover aspect-square"
                 src={data?.asset_url}
                 alt="DJ Pepe"
               />

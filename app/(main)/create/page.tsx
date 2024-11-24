@@ -14,6 +14,7 @@ import useNFTMint from "@/lib/web3/hook/nft/useNFTMint";
 import MediaUpload from "./components/MediaUpload";
 import { useFileUploadProvider } from "@/provider/FileUploadProvider";
 import { uploadJson } from "@/lib/ipfs/uploadJson";
+import Backbutton from "@/lib/components/button/Backbutton";
 
 const CreateNFT = () => {
   const { imageUri } = useFileUploadProvider()
@@ -55,7 +56,7 @@ const CreateNFT = () => {
   };
 
   return (
-    <div>
+    <div className="mb-0">
       <div className="relative">
         <img
           className="w-full max-h-[800px] opacity-60"
@@ -64,7 +65,8 @@ const CreateNFT = () => {
         />
       </div>
       <div className="container" id="detailed-container">
-        <Breadcrumbs
+        <div className="relative w-full flex justify-between items-center">
+          <Breadcrumbs
           separator=">>"
           itemClasses={{
             separator: "px-2",
@@ -72,9 +74,11 @@ const CreateNFT = () => {
           className="my-6"
         >
           <BreadcrumbItem>Home</BreadcrumbItem>
-          <BreadcrumbItem>Create NFTs</BreadcrumbItem>
-        </Breadcrumbs>
-        <div className="flex flex-col lg:flex-row gap-3 pb-6">
+            <BreadcrumbItem>Create NFTs</BreadcrumbItem>
+          </Breadcrumbs>
+          <Backbutton/>
+        </div>
+        <div className="flex flex-col lg:flex-row gap-3 pb-10 mb-0">
           <div className="w-full p-4 bg-white/5 rounded-md">
             <div className="w-full flex flex-col justify-center items-center gap-3">
               <h3 className="font-maladroit">Select Image and Mint Your NFT</h3>
@@ -105,12 +109,8 @@ const CreateNFT = () => {
               />
               <Input
                 aria-label="Search"
+                className="w-[400px]"
                 classNames={{inputWrapper: "w-[400px] bg-white/10 py-2 h-full", input: "text-lg"}}
-
-                // classNames={{
-                //   inputWrapper: "w-[400px] h-full bg-white/10 py-2",
-                //   input: "text-lg",
-                // }}
                 value={nftName}
                 onChange={(e) => setNftName(e.target.value)}
                 labelPlacement="outside"

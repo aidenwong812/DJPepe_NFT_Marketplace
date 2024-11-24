@@ -32,7 +32,7 @@ const Explorer = () => {
   const cols = useColNums();
 
   return (
-    <div >
+    <div>
       <div className="relative">
         <img
           className="w-full max-h-[800px] opacity-60"
@@ -68,19 +68,23 @@ const Explorer = () => {
             <p className="mb-10">All NFTs listed in the DJ Pepe marketplace</p>
             {
               isLoading ? <Spinner className="mt-10 size-[100px]" /> :
-                <ImageContainer cols={cols}>
-                  {listedNFTs.map((nft, index) => {
-                    return (
-                      <NFTShowcaseCard
-                        key={index}
-                        asset={nft.asset_url}
-                        nftId={nft.token_id}
-                        name={nft.token_name}
-                        price={nft.price}
-                      />
-                    );
-                  })}
-                </ImageContainer>}
+                listedNFTs.length > 0 ?
+                  <ImageContainer cols={cols}>
+                    {listedNFTs.map((nft, index) => {
+                      return (
+                        <NFTShowcaseCard
+                          key={index}
+                          asset={nft.asset_url}
+                          nftId={nft.token_id}
+                          name={nft.token_name}
+                          price={nft.price}
+                        />
+                      );
+                    })}
+                  </ImageContainer>
+                  :
+                  <p className="text-center text-medium font-maladroit mt-20">No NFTs found</p>
+            }
           </div>
         </div>
       </div>
