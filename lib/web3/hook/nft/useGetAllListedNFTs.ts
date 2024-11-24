@@ -12,6 +12,8 @@ export const useGetAllListedNFTs = async () => {
     address: MARKET_ADDRESS,
     functionName: 'getAllListedNFTs',
   }) as any[];
+
+  console.log(result);
   
   const NFTdata = await Promise.all(result.map(async (nft) => {
     const {url, name} = await getTokenUri(nft.nftId);

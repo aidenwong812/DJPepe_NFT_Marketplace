@@ -17,7 +17,6 @@ import { Icon } from "@iconify/react";
 import PrimaryButton from "@/lib/components/button/PrimaryButton";
 import { shortenAddress } from "@/lib/components/profile/profile-kit/ProfileHeader";
 
-import { postServer } from "@/lib/net/fetch/fetch";
 import useNFTList from "@/lib/web3/hook/useNFTList";
 import useNFTApprove from "@/lib/web3/hook/nft/useNFTApprove";
 import useToast from "@/lib/hooks/toast/useToast";
@@ -78,20 +77,7 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
         data?.token_id as number,
         ethers.parseEther(listPrice)
       );
-
-      if (tx) {
-        await approveNFT(data?.token_id as number);
-        setTimeout(async () => {
-          if (tx) {
-            const response = await postServer("/nft/list", {
-              tx,
-              address: address as string,
-              token_id: data?.token_id as number,
-              price: listPrice,
-            });
-          }
-        }, 30000);
-      }
+     
     } catch (err) {
       console.log(err);
     }
@@ -105,18 +91,7 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
 
     try {
       const tx = await delistNFT(data?.token_id as number);
-
-      if (tx) {
-        setTimeout(async () => {
-          if (tx) {
-            const response = await postServer("/nft/delist", {
-              tx,
-              address: address as string,
-              token_id: data?.token_id as number,
-            });
-          }
-        }, 30000);
-      }
+      
     } catch (err) {
       console.log(err);
     }

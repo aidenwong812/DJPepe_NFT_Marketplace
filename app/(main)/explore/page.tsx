@@ -64,8 +64,8 @@ const Explorer = () => {
         </div>
         <div>
           <div className="mt-16 text-center">
-            <h2 className="font-maladroit">Latest NFTs</h2>
-            <p className="mb-10">The latest NFTs by NYW artists and users</p>
+            <h2 className="font-maladroit">All NFTs</h2>
+            <p className="mb-10">All NFTs listed in the DJ Pepe marketplace</p>
             {
               isLoading ? <Spinner className="mt-10 size-[100px]" /> :
                 <ImageContainer cols={cols}>
@@ -75,6 +75,8 @@ const Explorer = () => {
                         key={index}
                         asset={nft.asset_url}
                         nftId={nft.token_id}
+                        name={nft.token_name}
+                        price={nft.price}
                       />
                     );
                   })}

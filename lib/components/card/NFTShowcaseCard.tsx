@@ -8,11 +8,13 @@ import { useState, type FC } from "react";
 type Props = {
   asset: string;
   nftId?: number;
+  name?: string;
+  price?: number;
 };
 
-const NFTShowcaseCard: FC<Props> = ({ asset, nftId }) => {
+const NFTShowcaseCard: FC<Props> = ({ asset, nftId, name, price }) => {
   const router = useRouter();
-  const [isLoading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   return (
     <Card
@@ -28,6 +30,10 @@ const NFTShowcaseCard: FC<Props> = ({ asset, nftId }) => {
         onClick={() => router.push(`/nft/${nftId}`)}
         onLoad={() => setLoading(true)}
       />
+      <div className="flex flex-wrap justify-between w-full px-16 py-3">
+        <p className="text-lg font-semibold font-maladroit">{name}</p>
+        <p className="text-lg font-semibold font-maladroit">{Number(price)/10**18} ETH</p>
+      </div>
     </Card>
   );
 };

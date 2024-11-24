@@ -1,28 +1,15 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import {
-  Button,
   Image,
-  Input,
-  Accordion,
-  AccordionItem,
-  Pagination,
   Spinner,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
 
-import MultiCarousel from "@/lib/components/carousel/MultiCarousel";
 import PrimaryButton from "@/lib/components/button/PrimaryButton";
-import NFTDetails from "@/app/(main)/explore/NFTDetails.json";
-import LikeIcon from "@/public/icon/like.svg";
-import FollowIcon from "@/public/icon/follow.svg";
 import { shortenAddress } from "@/lib/components/profile/profile-kit/ProfileHeader";
-import { fetchServer, postServer } from "@/lib/net/fetch/fetch";
 
 import useToast from "@/lib/hooks/toast/useToast";
-import useComments from "@/lib/hooks/nft/useComments";
-import useLike from "@/lib/hooks/nft/useLike";
 import useNFTBuy from "@/lib/web3/hook/nft/useNFTBuy";
 import { getNFT } from "@/lib/web3/hook/nft/getNFT";
 import { NFTData } from "@/types";
@@ -72,7 +59,7 @@ export default function NFTDetailView({
     try {
       const tx = await buyNFT(
         Number(selectedNFT?.token_id),
-        Number(selectedNFT?.price)
+        Number(selectedNFT?.price) / 10 ** 18
       );
       console.log(tx);
     } catch (err) {
@@ -86,7 +73,7 @@ export default function NFTDetailView({
         isLoading ? <Spinner className="mt-10 size-[100px]" /> :
           <div className="main-pt font-maladroit">
             <div id="detailed-container" className="container">
-              <div className="flex flex-col lg:flex-row gap-6 mt-4 lg:mt-10">
+              <div className="flex flex-col justify-center items-center lg:flex-row gap-10 mt-4 lg:mt-10 w-full">
                 <div className="p-2 lg:bg-white/10 rounded-md">
                   {selectedNFT && (
                     <Image
@@ -96,7 +83,7 @@ export default function NFTDetailView({
                     />
                   )}
                 </div>
-                <div className="w-full">
+                <div className="w-full justify-center items-center">
                   <h2>{selectedNFT?.token_name}</h2>
                   <div className="flex justify-between mt-1">
                     <div className="flex gap-2">
