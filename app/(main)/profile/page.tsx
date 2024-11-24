@@ -10,7 +10,6 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import NFTModal from "@/lib/components/modal/NFTModal";
 import { CopyLink } from "@/lib/components/profile/profile-kit/ProfileHeader";
 import TabNFT from "./tabs/TabNFT";
-import TabArtwork from "./tabs/TabArtwork";
 import TabListed from "./tabs/TabList";
 
 import type { NFTData } from "./tabs/TabNFT";
@@ -34,12 +33,7 @@ const ProfilePage = () => {
       <div className="container">
         <div className="flex flex-col items-center gap-6 pt-16">
           <Image src="/profile.png" width={200} height={200} alt="Avatar" />
-          <CopyLink url={address as string} className="text-lg" />
-          <div className="flex gap-3 text-xl font-bold">
-            <span>0 followers</span>
-            <span>·</span>
-            <span>0 following</span>
-          </div>
+          <CopyLink url={address as string} className="text-lg" />          
         </div>
         <div className="flex justify-center">
           <div className="w-full flex flex-col items-center">
@@ -49,21 +43,7 @@ const ProfilePage = () => {
                 tabContent: "text-large",
               }}
               size="lg"
-            >
-              <Tab
-                key="artwork"
-                textValue="Artwork"
-                title={
-                  <div className="flex items-center gap-1.5">
-                    <Icon icon="material-symbols:wall-art-outline" width={20} />
-                    <p>Artwork</p>
-                  </div>
-                }
-              >
-                <TabArtwork
-                  cols={screenSize.isLarge ? 4 : screenSize.isMedium ? 3 : 2}
-                />
-              </Tab>
+            >            
               <Tab
                 key="nft"
                 textValue="NFTs"
@@ -73,7 +53,6 @@ const ProfilePage = () => {
                     <p>NFTs</p>
                   </div>
                 }
-                className="w-full"
               >
                 <TabNFT
                   setModalType={setModalType}
@@ -98,18 +77,6 @@ const ProfilePage = () => {
                   open={onOpen}
                   cols={screenSize.isLarge ? 4 : screenSize.isMedium ? 3 : 2}
                 />
-              </Tab>
-              <Tab
-                key="like"
-                textValue="Liked"
-                title={
-                  <div className="flex items-center gap-1.5">
-                    <Icon icon="wpf:like" width={20} />
-                    <p>Liked</p>
-                  </div>
-                }
-              >
-                <h2>Liked</h2>
               </Tab>
             </Tabs>
           </div>

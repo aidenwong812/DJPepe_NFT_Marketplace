@@ -138,9 +138,9 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
             </ModalHeader>
             <ModalBody className="font-small items-center">
               <Image
-                className="max-h-[600px]"
-                src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data?.asset_url}`}
-                alt="NYW"
+                className="h-[600px]"
+                src={data?.asset_url}
+                alt="DJ Pepe"
               />
               <Accordion
                 fullWidth
@@ -166,11 +166,6 @@ const NFTModal: FC<Props> = ({ type, isOpen, onClose, data }) => {
                   <p>
                     <span className="font-semibold">Token ID</span>:{" "}
                     {data?.token_id}
-                  </p>
-                  <p className="mt-1">
-                    {" "}
-                    <span className="font-semibold">Prompt</span>:{" "}
-                    {data?.prompt}
                   </p>
                   <p className="mt-1">
                     <span className="font-semibold">Creator</span>:{" "}

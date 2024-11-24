@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { MAX_FILE_SIZE, ONE_MB } from '@/lib/consts'
 import getIpfsJwt from '@/lib/ipfs/getIpfsJwt'
 import { uploadFile } from '@/lib/ipfs/uploadFile'
+import { useAccount } from 'wagmi'
+import { toast } from 'react-toastify'
 
 const useFileUpload = () => {
   const [blurImageUrl, setBlurImageUrl] = useState<string>('')
@@ -47,4 +49,4 @@ const useFileUpload = () => {
   }
 }
 
-export default useFileUpload
+export default useFileUpload;

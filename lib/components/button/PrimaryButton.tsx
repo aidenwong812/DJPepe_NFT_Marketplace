@@ -13,14 +13,14 @@ const PrimaryButton: React.FC<ButtonProps> = ({
   text,
   className,
   onClick,
-  isLoading
+  isLoading,
 }) => {
   return (
     <Button
       variant="light"
       size="lg"
       className={twMerge(
-        "w-[240px] h-[40px] px-3 group relative p-4 overflow-hidden rounded text-white transition-all duration-300 ease-out bg-[#4B0082] font-maladroit",
+        "h-[40px] px-3 group relative p-4 overflow-hidden rounded text-white transition-all duration-300 ease-out bg-[#4B0082] font-maladroit",
         className,
         "btn"
       )}

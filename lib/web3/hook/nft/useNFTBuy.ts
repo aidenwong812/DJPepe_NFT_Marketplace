@@ -21,7 +21,6 @@ const useNFTBuy = () => {
     if (!buyNFTAsync) {
       return;
     }
-    console.log(tokenId);
     try {
       return await buyNFTAsync({
         address: MARKET_ADDRESS,
