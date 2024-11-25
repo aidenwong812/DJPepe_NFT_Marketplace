@@ -64,7 +64,7 @@ const CreateNFT = () => {
           alt="Not Found"
         />
       </div>
-      <div className="container" id="detailed-container">
+      <div className="container mb-0" id="detailed-container">
         <div className="relative w-full flex justify-between items-center">
           <Breadcrumbs
           separator=">>"

@@ -13,10 +13,8 @@ export const useGetAllListedNFTs = async () => {
     functionName: 'getAllListedNFTs',
   }) as any[];
 
-  console.log(result);
-  
   const NFTdata = await Promise.all(result.map(async (nft) => {
-    const {url, name} = await getTokenUri(nft.nftId);
+    const { url, name } = await getTokenUri(nft.nftId);
     return {
       token_id: nft.nftId,
       token_name: name,

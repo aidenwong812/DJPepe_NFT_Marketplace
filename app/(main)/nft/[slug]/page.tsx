@@ -60,11 +60,10 @@ export default function NFTDetailView({
     }
 
     try {
-      const tx = await buyNFT(
+      await buyNFT(
         Number(selectedNFT?.token_id),
         Number(selectedNFT?.price) / 10 ** 18
       );
-      console.log(tx);
     } catch (err) {
       console.log(err);
     }
@@ -119,7 +118,7 @@ export default function NFTDetailView({
                 </div>
               </div>
             </div>
-            <Backbutton className="absolute top-16 right-10 z-10"/>
+            <Backbutton className="absolute top-16 right-10 z-10" />
           </div>
       }
     </div>
