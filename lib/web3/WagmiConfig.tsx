@@ -15,7 +15,7 @@ const metadata = {
 }
 
 // Create wagmiConfig
-const chains = [sepolia] as const
+const chains = [mainnet] as const
 export const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
