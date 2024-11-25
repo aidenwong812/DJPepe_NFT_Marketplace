@@ -13,13 +13,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Link,
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Badge,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
 
 import ToggleProfile from "@/lib/components/profile/ToggleProfile";
 import ConnectWalletButton from "../button/ConnectWalletButton";
@@ -70,24 +64,28 @@ export default function Header() {
               NFT Marketplace
             </Link>
           </NavbarItem>
-          <NavbarItem isActive={path.includes("create") ? true : false}>
-            <Link
-              aria-current="page"
-              className="flex gap-2 text-inherit"
-              href="/create"
-            >
-              Create NFT
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive={path.includes("profile") ? true : false}>
-            <Link
-              aria-current="page"
-              className="flex gap-2 text-inherit"
-              href="/profile"
-            >
-              My NFTs
-            </Link>
-          </NavbarItem>
+          {address && (
+            <NavbarItem isActive={path.includes("create") ? true : false}>
+              <Link
+                aria-current="page"
+                className="flex gap-2 text-inherit"
+                href="/create"
+              >
+                Create NFT
+              </Link>
+            </NavbarItem>
+          )}
+          {address && (
+            <NavbarItem isActive={path.includes("profile") ? true : false}>
+              <Link
+                aria-current="page"
+                className="flex gap-2 text-inherit"
+                href="/profile"
+              >
+                My NFTs
+              </Link>
+            </NavbarItem>
+          )}
         </NavbarContent>
         {address ? (
           <NavbarContent
@@ -115,11 +113,28 @@ export default function Header() {
               NFT Marketplace
             </Link>
           </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full" color="foreground" href="/create">
-              Create NFT
-            </Link>
-          </NavbarMenuItem>
+          {address && (
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                color="foreground"
+                href="/create"
+              >
+                Create NFT
+              </Link>
+            </NavbarMenuItem>
+          )}
+          {address && (
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                color="foreground"
+                href="/profile"
+              >
+                My NFTs
+              </Link>
+            </NavbarMenuItem>
+          )}
         </NavbarMenu>
       </Navbar>
     </div>

@@ -7,8 +7,9 @@ import { wagmiConfig } from "../../WagmiConfig"
 const NFT_ADDRESS = process.env.NEXT_PUBLIC_NFT_ADDRESS as `0x${string}`;
 
 export const getTokenUri = async (tokenId: number) => {
-  const metadata = await readContract(wagmiConfig, {
-    abi: NFT_ABI,
+  try {
+    const metadata = await readContract(wagmiConfig, {
+      abi: NFT_ABI,
     address: NFT_ADDRESS,
     functionName: 'tokenURI',
     args: [tokenId],
@@ -18,6 +19,13 @@ export const getTokenUri = async (tokenId: number) => {
   
   return {
     url: getIpfsLink(result.data?.url || ""),
-    name: result.data?.nft_name
-  };
+      name: result.data?.nft_name
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      url: "",
+      name: ""
+    };
+  }
 }
