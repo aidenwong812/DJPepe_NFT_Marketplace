@@ -35,7 +35,7 @@ const Explorer = () => {
     <div>
       <div className="relative">
         <img
-          className="w-full max-h-[800px] opacity-60"
+          className="w-full max-h-[1000px] opacity-60"
           src="/metaverse.png"
           alt="Not Found"
         />
