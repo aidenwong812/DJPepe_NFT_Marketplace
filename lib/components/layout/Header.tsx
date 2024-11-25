@@ -59,6 +59,11 @@ export default function Header() {
           className="ml-4 hidden h-12 w-full max-w-fit gap-8 rounded-full px-8 sm:flex"
           justify="start"
         >
+          <NavbarItem>
+            <Link className="flex gap-2 text-inherit" href="https://wordpress-1244155-4708982.cloudwaysapps.com/">
+              Home
+            </Link>
+          </NavbarItem>
           <NavbarItem isActive={path.includes("explore") ? true : false}>
             <Link className="flex gap-2 text-inherit" href="/explore">
               NFT Marketplace
