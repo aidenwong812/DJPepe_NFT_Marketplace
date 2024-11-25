@@ -21,10 +21,11 @@ const TabListed = ({
 }) => {
   const { address, isConnected } = useAccount();
   const [listed, setListed] = useState<NFTData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (address && isConnected) {
+      setIsLoading(true);
       const fetchListed = async () => {
         const allNFTs = await useGetAllListedNFTs();
         const filtered = allNFTs.filter((nft) => nft.creator === address);
@@ -46,21 +47,24 @@ const TabListed = ({
       <Box sx={{ width: "100%", overflowY: "none" }}>
         {
           isLoading ? <Spinner className="mt-10 size-[100px]" /> :
-            <ImageList variant="masonry" cols={cols} gap={10}>
-              {
-                listed.map((nft, index) => {
-                  return (
-                    <Image
-                      key={nft.token_id}
-                      src={getIpfsLink(nft.asset_url)}
-                      isZoomed
-                      alt={`NFT ${index}`}
-                      className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
-                      onClick={() => handleDelist(nft.token_id)}
-                    />
-                  );
-                })}
-            </ImageList>
+            listed.length > 0 ?
+              <ImageList variant="masonry" cols={cols} gap={10}>
+                {
+                  listed.map((nft, index) => {
+                    return (
+                      <Image
+                        key={nft.token_id}
+                        src={getIpfsLink(nft.asset_url)}
+                        isZoomed
+                        alt={`NFT ${index}`}
+                        className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
+                        onClick={() => handleDelist(nft.token_id)}
+                      />
+                    );
+                  })}
+              </ImageList>
+              :
+              <p className="text-center text-medium font-maladroit mt-20">No listed NFTs found</p>
         }
       </Box>
     </div>

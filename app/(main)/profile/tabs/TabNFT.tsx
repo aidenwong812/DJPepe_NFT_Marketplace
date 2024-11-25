@@ -64,23 +64,26 @@ const TabNFT = ({
       <Box sx={{ width: "100%", overflowY: "none" }}>
         {
           isLoading ? <Spinner className="mt-10 size-[100px]" /> :
-            <ImageList variant="masonry" cols={cols} gap={10}>
-              {
-                myNFTs.map((nft, index) => {
-                  return (
-                    <Image
-                      key={nft.token_id}
-                      src={nft.asset_url}
-                      isZoomed
-                      alt={`NFT ${index}`}
-                      className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
-                      onClick={
-                        () => handleClick(nft.token_id)
-                      }
-                    />
-                  );
-                })}
-            </ImageList>
+            myNFTs.length > 0 ?
+              <ImageList variant="masonry" cols={cols} gap={10}>
+                {
+                  myNFTs.map((nft, index) => {
+                    return (
+                      <Image
+                        key={nft.token_id}
+                        src={nft.asset_url}
+                        isZoomed
+                        alt={`NFT ${index}`}
+                        className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
+                        onClick={
+                          () => handleClick(nft.token_id)
+                        }
+                      />
+                    );
+                  })}
+              </ImageList>
+              :
+              <p className="text-center text-medium mt-20 font-maladroit">No NFTs found</p>
         }
       </Box>
     </div>

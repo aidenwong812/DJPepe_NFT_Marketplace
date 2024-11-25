@@ -13,6 +13,7 @@ import TabNFT from "./tabs/TabNFT";
 import TabListed from "./tabs/TabList";
 
 import type { NFTData } from "./tabs/TabNFT";
+import Backbutton from "@/lib/components/button/Backbutton";
 
 const ProfilePage = () => {
   const theme = useTheme();
@@ -29,7 +30,8 @@ const ProfilePage = () => {
   const [modalType, setModalType] = useState<"list" | "delist">("list");
 
   return (
-    <div className="main-pt">
+    <div className="main-pt relative">
+      <Backbutton className="absolute top-36 right-10 z-10"/>
       <div className="container">
         <div className="flex flex-col items-center gap-6 pt-16">
           <Image src="/profile.png" width={200} height={200} alt="Avatar" />
@@ -82,7 +84,6 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-
       <NFTModal
         type={modalType}
         isOpen={isOpen}
