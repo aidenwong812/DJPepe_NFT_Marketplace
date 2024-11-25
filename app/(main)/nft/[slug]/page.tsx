@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 import {
   Image,
   Spinner,
@@ -23,7 +24,7 @@ export default function NFTDetailView({
   const token_id = parseInt(params.slug);
 
   const [selectedNFT, setSelectedNFT] = useState<NFTData | null>(null);
-
+  const { open } = useWeb3Modal();
 
   const { address } = useAccount();
   const customToast = useToast();
@@ -49,8 +50,8 @@ export default function NFTDetailView({
   }, [isBuyNFTSuccess]);
 
   const handlePurchase = async () => {
-    if (!address) {
-      customToast("failed", "Please connect your wallet");
+    if (!address) {      
+      open();
       return;
     }
 
