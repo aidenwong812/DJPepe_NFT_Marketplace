@@ -53,6 +53,14 @@ const TabNFT = ({
     }
   }, [address, isConnected]);
 
+  useEffect(() => {
+    // Scroll to bottom of page on component mount
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  }, [myNFTs]);
+
   const handleClick = (id: number) => {
     setModalType("list");
     setSelected(myNFTs.find((nft) => nft.token_id === id));

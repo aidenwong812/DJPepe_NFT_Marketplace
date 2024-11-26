@@ -36,6 +36,14 @@ const TabListed = ({
     }
   }, [address, isConnected]);
 
+  useEffect(() => {
+    // Scroll to bottom of page on component mount
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  }, [listed]);
+
   const handleDelist = async (id: number) => {
     setModalType("delist");
     setSelected(listed.find((nft) => nft.token_id === id));

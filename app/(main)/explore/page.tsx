@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import {
-  Switch,
   Breadcrumbs,
   BreadcrumbItem,
   Spinner,
@@ -28,6 +27,14 @@ const Explorer = () => {
     }
     fetchListed();
   }, [])
+
+  useEffect(() => {
+    // Scroll to bottom of page on component mount
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  }, [listedNFTs]);
 
   const cols = useColNums();
 
