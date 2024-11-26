@@ -73,9 +73,9 @@ export default function NFTDetailView({
   return (
     <div className="flex justify-center items-center main-pt">
       {
-        isLoading ? <Spinner className="mt-10 size-[100px]" /> :
+        isLoading ? <Spinner className="mt-32 size-[100px]" /> :
           <div className="relative">
-            <div className="flex justify-center items-center gap-20 lg:mt-10 w-full px-10 font-maladroit">
+            <div className="flex justify-center items-center gap-20 lg:mt-32 w-full px-10 font-maladroit">
               <div className="p-2 lg:bg-white/10 rounded-md basis-1/2">
                 {selectedNFT && (
                   <Image
