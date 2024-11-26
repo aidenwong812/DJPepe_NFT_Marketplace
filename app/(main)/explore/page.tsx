@@ -33,7 +33,7 @@ const Explorer = () => {
   return (
     <div>
       <div className="bg-[url('/metaverse.png')] bg-cover bg-left-top bg-repeat opacity-50 fixed top-0 w-full h-full z-0" />
-      <div className="pb-16 pt-32 px-40">
+      <div className="pb-16 px-40">
         <div className="flex justify-between items-center">
           <span style={{ zIndex: 20 }}>
             <Breadcrumbs
@@ -57,8 +57,8 @@ const Explorer = () => {
         <div>
           <div className="text-center">
             <div className="flex flex-col items-center gap-2">
-              <h2 className="font-maladroit" style={{ zIndex: 20 }}>All NFTs</h2>
-              <p className="mb-10" style={{ zIndex: 20 }}>All NFTs listed in the DJ Pepe marketplace</p>
+              <h2 className="font-maladroit" style={{ zIndex: 20 }}>DJ Pepe NFTs</h2>
+              <p className="mb-10" style={{ zIndex: 20 }}>New NFTs added daily</p>
             </div>
             <div>
               {
