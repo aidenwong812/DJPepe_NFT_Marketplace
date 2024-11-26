@@ -58,7 +58,7 @@ const CreateNFT = () => {
   return (
     <div className="mb-0">
       <div className="bg-[url('/page-create.png')] bg-cover bg-left-top bg-repeat opacity-50 fixed top-0 w-full h-full z-0" />      
-      <div className="mb-0 pt-32 px-40" id="detailed-container">
+      <div className="mb-0 px-40" id="detailed-container">
         <div className="relative w-full flex justify-between items-center">
           <Breadcrumbs
             separator=">>"

@@ -40,13 +40,11 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="px-4 z-50 w-full fixed top-4 font-maladroit">
+    <div className="px-20 z-50 w-full top-4 font-maladroit">
       <Navbar
         classNames={{
           base: "bg-transparent backdrop-filter-none",
-          wrapper:
-            "px-4 sm:px-6 bg-white/15 border-1 border-white/30 backdrop-blur-xl backdrop-saturate-150 rounded-full",
-          item: "data-[active=true]:text-[#4B0082] max-w-[1536px]",
+          item: "data-[active=true]:text-[#4B0082]",
         }}
         height="100px"
         maxWidth="2xl"
