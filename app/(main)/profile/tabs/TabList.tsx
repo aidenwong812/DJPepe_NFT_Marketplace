@@ -36,14 +36,6 @@ const TabListed = ({
     }
   }, [address, isConnected]);
 
-  useEffect(() => {
-    // Scroll to bottom of page on component mount
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  }, [listed]);
-
   const handleDelist = async (id: number) => {
     setModalType("delist");
     setSelected(listed.find((nft) => nft.token_id === id));
@@ -56,7 +48,7 @@ const TabListed = ({
         {
           isLoading ? <Spinner className="mt-10 size-[100px]" /> :
             listed.length > 0 ?
-              <ImageList variant="masonry" cols={cols} gap={10}>
+              <ImageList variant="masonry" cols={cols} gap={10} rowHeight={200}>
                 {
                   listed.map((nft, index) => {
                     return (
@@ -65,7 +57,7 @@ const TabListed = ({
                         src={getIpfsLink(nft.asset_url)}
                         isZoomed
                         alt={`NFT ${index}`}
-                        className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
+                        className="py-1 rounded-lg hover:cursor-pointer w-[300px] aspect-square"
                         onClick={() => handleDelist(nft.token_id)}
                       />
                     );
