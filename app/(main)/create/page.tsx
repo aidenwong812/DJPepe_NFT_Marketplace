@@ -31,6 +31,14 @@ const CreateNFT = () => {
     }
   }, [isMintSuccess]);
 
+  useEffect(() => {
+    // Scroll to bottom of page on component mount
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  }, []);
+
   const mintNow = async () => {
     if (imageUri === null) {
       customToast("failed", "Select image");
