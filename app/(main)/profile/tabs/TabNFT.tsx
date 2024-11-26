@@ -53,14 +53,6 @@ const TabNFT = ({
     }
   }, [address, isConnected]);
 
-  useEffect(() => {
-    // Scroll to bottom of page on component mount
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  }, [myNFTs]);
-
   const handleClick = (id: number) => {
     setModalType("list");
     setSelected(myNFTs.find((nft) => nft.token_id === id));
@@ -73,7 +65,7 @@ const TabNFT = ({
         {
           isLoading ? <Spinner className="mt-10 size-[100px]" /> :
             myNFTs.length > 0 ?
-              <ImageList variant="masonry" cols={cols} gap={10}>
+              <ImageList variant="masonry" cols={cols} gap={10} rowHeight={200}>
                 {
                   myNFTs.map((nft, index) => {
                     return (
@@ -82,7 +74,7 @@ const TabNFT = ({
                         src={nft.asset_url}
                         isZoomed
                         alt={`NFT ${index}`}
-                        className="py-1 rounded-lg hover:cursor-pointer h-[300px]"
+                        className="py-1 rounded-lg hover:cursor-pointer w-[300px] aspect-square"
                         onClick={
                           () => handleClick(nft.token_id)
                         }

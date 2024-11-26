@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Tabs, Tab } from "@nextui-org/react";
+import { Tabs, Tab, BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { useAccount } from "wagmi";
@@ -30,12 +30,22 @@ const ProfilePage = () => {
   const [modalType, setModalType] = useState<"list" | "delist">("list");
 
   return (
-    <div className="main-pt relative">
-      <Backbutton className="absolute top-36 right-10 z-10"/>
+    <div className="main-pt relative px-4">
+      <Breadcrumbs
+        separator=">>"
+        itemClasses={{
+          separator: "px-2",
+        }}
+        className="my-6"
+      >
+        <BreadcrumbItem href="https://wordpress-1244155-4708982.cloudwaysapps.com/">Home</BreadcrumbItem>
+        <BreadcrumbItem>My NFTs</BreadcrumbItem>
+      </Breadcrumbs>
+      <Backbutton className="absolute top-36 right-10 z-10" />
       <div className="container">
         <div className="flex flex-col items-center gap-6 pt-16">
           <Image src="/profile.png" width={200} height={200} alt="Avatar" />
-          <CopyLink url={address as string} className="text-lg" />          
+          <CopyLink url={address as string} className="text-lg" />
         </div>
         <div className="flex justify-center">
           <div className="w-full flex flex-col items-center">
@@ -45,7 +55,7 @@ const ProfilePage = () => {
                 tabContent: "text-large",
               }}
               size="lg"
-            >            
+            >
               <Tab
                 key="nft"
                 textValue="NFTs"

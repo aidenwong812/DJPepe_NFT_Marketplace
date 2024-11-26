@@ -12,7 +12,7 @@ export default function ImageContainer({
   return (
     <Box sx={{ width: "100%", overflowY: "none" }}>
       {children ? (
-        <ImageList variant="masonry" cols={cols} gap={10}>
+        <ImageList variant="masonry" cols={cols} gap={10} rowHeight={200}>
           {children}
         </ImageList>
       ) : null}

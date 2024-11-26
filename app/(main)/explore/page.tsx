@@ -28,36 +28,21 @@ const Explorer = () => {
     fetchListed();
   }, [])
 
-  useEffect(() => {
-    // Scroll to bottom of page on component mount
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  }, [listedNFTs]);
-
   const cols = useColNums();
 
   return (
     <div>
-      <div className="relative">
-        <img
-          className="w-full max-h-[1000px] opacity-60"
-          src="/metaverse.png"
-          alt="Not Found"
-        />
-        <div className="absolute top-0 w-full h-full bg-transparent/5" />
-      </div>
-      <div className="container mb-0 pb-16">
-        <div className="flex justify-between items-center my-6">
-          <span>
+      <div className="bg-[url('/metaverse.png')] bg-cover bg-left-top bg-repeat opacity-50 fixed top-0 w-full h-full z-0" />
+      <div className="pb-16 pt-32 px-40">
+        <div className="flex justify-between items-center">
+          <span style={{ zIndex: 20 }}>
             <Breadcrumbs
               separator=">>"
               itemClasses={{
                 separator: "px-2",
               }}
             >
-              <BreadcrumbItem>Home</BreadcrumbItem>
+              <BreadcrumbItem href="https://wordpress-1244155-4708982.cloudwaysapps.com/">Home</BreadcrumbItem>
               <BreadcrumbItem onClick={() => setSelectedNFT(-1)}>
                 NFT MARKETPLACE
               </BreadcrumbItem>
@@ -70,10 +55,13 @@ const Explorer = () => {
           </span>
         </div>
         <div>
-          <div className="mt-16 text-center">
-            <h2 className="font-maladroit">All NFTs</h2>
-            <p className="mb-10">All NFTs listed in the DJ Pepe marketplace</p>
-            {
+          <div className="text-center">
+            <div className="flex flex-col items-center gap-2">
+              <h2 className="font-maladroit" style={{ zIndex: 20 }}>All NFTs</h2>
+              <p className="mb-10" style={{ zIndex: 20 }}>All NFTs listed in the DJ Pepe marketplace</p>
+            </div>
+            <div>
+              {
               isLoading ? <Spinner className="mt-10 size-[100px]" /> :
                 listedNFTs.length > 0 ?
                   <ImageContainer cols={cols}>
@@ -90,8 +78,9 @@ const Explorer = () => {
                     })}
                   </ImageContainer>
                   :
-                  <p className="text-center text-medium font-maladroit mt-20">No NFTs found</p>
-            }
+                  <p className="text-center text-medium font-maladroit mt-20" style={{ zIndex: 20 }}>No NFTs found</p>
+              }
+            </div>
           </div>
         </div>
       </div>

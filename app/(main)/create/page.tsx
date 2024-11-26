@@ -31,14 +31,6 @@ const CreateNFT = () => {
     }
   }, [isMintSuccess]);
 
-  useEffect(() => {
-    // Scroll to bottom of page on component mount
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  }, []);
-
   const mintNow = async () => {
     if (imageUri === null) {
       customToast("failed", "Select image");
@@ -65,31 +57,25 @@ const CreateNFT = () => {
 
   return (
     <div className="mb-0">
-      <div className="relative">
-        <img
-          className="w-full max-h-[800px] opacity-60"
-          src="/page-create.png"
-          alt="Not Found"
-        />
-      </div>
-      <div className="container mb-0" id="detailed-container">
+      <div className="bg-[url('/page-create.png')] bg-cover bg-left-top bg-repeat opacity-50 fixed top-0 w-full h-full z-0" />      
+      <div className="mb-0 pt-32 px-40" id="detailed-container">
         <div className="relative w-full flex justify-between items-center">
           <Breadcrumbs
-          separator=">>"
-          itemClasses={{
-            separator: "px-2",
-          }}
-          className="my-6"
-        >
-          <BreadcrumbItem>Home</BreadcrumbItem>
+            separator=">>"
+            itemClasses={{
+              separator: "px-2",
+            }}
+            className="my-6"
+          >
+            <BreadcrumbItem href="https://wordpress-1244155-4708982.cloudwaysapps.com/">Home</BreadcrumbItem>
             <BreadcrumbItem>Create NFTs</BreadcrumbItem>
           </Breadcrumbs>
-          <Backbutton/>
+          <Backbutton />
         </div>
         <div className="flex flex-col lg:flex-row gap-3 pb-10 mb-0">
-          <div className="w-full p-4 bg-white/5 rounded-md">
+          <div className="w-full p-4 bg-slate-500/60 rounded-md">
             <div className="w-full flex flex-col justify-center items-center gap-3">
-              <h3 className="font-maladroit">Select Image and Mint Your NFT</h3>
+              <h3 className="font-maladroit" style={{ zIndex: 20 }}>Select Image and Mint Your NFT</h3>
               <div className="mt-10">
                 <MediaUpload />
               </div>
@@ -103,7 +89,7 @@ const CreateNFT = () => {
                 onChange={(e) => setRoyalty(parseInt(e.target.value))}
                 classNames={{
                   inputWrapper:
-                    "w-full h-full bg-white/10 py-2 rounded-md flex justify-center items-center",
+                    "w-full h-full bg-black/80 py-2 rounded-md flex justify-center items-center",
                   input: "text-lg",
                   base: "max-w-[400px]",
                 }}
@@ -118,7 +104,7 @@ const CreateNFT = () => {
               <Input
                 aria-label="Search"
                 className="w-[400px]"
-                classNames={{inputWrapper: "w-[400px] bg-white/10 py-2 h-full", input: "text-lg"}}
+                classNames={{ inputWrapper: "w-[400px] bg-black/80 py-2 h-full", input: "text-lg" }}
                 value={nftName}
                 onChange={(e) => setNftName(e.target.value)}
                 labelPlacement="outside"

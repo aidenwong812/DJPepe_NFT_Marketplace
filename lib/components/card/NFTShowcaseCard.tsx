@@ -20,7 +20,7 @@ const NFTShowcaseCard: FC<Props> = ({ asset, nftId, name, price }) => {
     <Card
       isFooterBlurred
       radius="lg"
-      className="flex justify-center items-center border-none p-2 bg-white/5 "
+      className="flex justify-center items-center border-none p-2 bg-slate-500/40"
     >
       <Image
         alt="Woman listing to music"
