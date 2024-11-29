@@ -58,7 +58,7 @@ export default function Header() {
           justify="start"
         >
           <NavbarItem>
-            <Link className="flex gap-2 text-inherit" href="https://wordpress-1244155-4708982.cloudwaysapps.com/">
+            <Link className="flex gap-2 text-inherit" href="https://djpepe.rocks/">
               Home
             </Link>
           </NavbarItem>

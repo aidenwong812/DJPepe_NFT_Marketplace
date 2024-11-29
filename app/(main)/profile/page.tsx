@@ -38,7 +38,7 @@ const ProfilePage = () => {
         }}
         className="my-6"
       >
-        <BreadcrumbItem href="https://wordpress-1244155-4708982.cloudwaysapps.com/">Home</BreadcrumbItem>
+        <BreadcrumbItem href="https://djpepe.rocks/">Home</BreadcrumbItem>
         <BreadcrumbItem>My NFTs</BreadcrumbItem>
       </Breadcrumbs>
       <Backbutton className="absolute top-36 right-10 z-10" />
