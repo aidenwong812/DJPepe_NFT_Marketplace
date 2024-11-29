@@ -42,7 +42,7 @@ const Explorer = () => {
                 separator: "px-2",
               }}
             >
-              <BreadcrumbItem href="https://wordpress-1244155-4708982.cloudwaysapps.com/">Home</BreadcrumbItem>
+              <BreadcrumbItem href="https://djpepe.rocks/">Home</BreadcrumbItem>
               <BreadcrumbItem onClick={() => setSelectedNFT(-1)}>
                 NFT MARKETPLACE
               </BreadcrumbItem>
